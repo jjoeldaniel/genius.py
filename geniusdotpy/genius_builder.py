@@ -1,5 +1,6 @@
 import requests
 from track import Track
+from artist import Artist
 
 class GeniusBuilder:
 
@@ -31,3 +32,10 @@ class GeniusBuilder:
             tracks.append(track)
 
         return tracks
+
+    def search_artist(self, artist_id):
+        endpoint = f'{self.endpoint}/artists/{artist_id}/songs'
+        headers = {'Authorization': f'Bearer {self.client_access_token}'}
+
+        response = requests.get(endpoint, headers=headers)
+        return Artist(tracks_info=response.json()['response']['songs'])
