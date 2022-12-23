@@ -23,6 +23,9 @@ class Track:
     def __str__(self):
         return self.full_title
 
+    def get_artist_id(self):
+        return self.track_info['primary_artist']['id']
+
     def release_date(self):
         year = self.track_info['release_date_components']['year']
         month = self.track_info['release_date_components']['month']
