@@ -1,7 +1,6 @@
 import requests
 import json
 from track import Track
-from rauth import OAuth2Service
 
 class Genius:
 
