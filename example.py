@@ -3,7 +3,7 @@ from genius_builder import *
 from dotenv import load_dotenv
 
 # Example uses dotenv to load environment variables from .env file
-# See https://github.com/cdimascio/dotenv-java
+# See https://pypi.org/project/python-dotenv/
 load_dotenv()
 
 client_id = os.getenv('CLIENT_ID')
