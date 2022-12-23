@@ -12,7 +12,9 @@ client_access_token = os.getenv('CLIENT_ACCESS_TOKEN')
 
 genius = GeniusBuilder(client_id=client_id, client_secret=client_secret, client_access_token=client_access_token)
 
-for track in genius.search(query='Kendrick Lamar'):
-    print(track)
+print(genius.search(query='Kendrick Lamar')[0])
+print(genius.search_by_id(378195))
 
-print(genius.search_by_id(378195).page_views)
+artist = genius.search_artist(artist_id=16775)
+for song in artist.list_tracks():
+    print(song)
