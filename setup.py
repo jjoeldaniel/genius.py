@@ -5,7 +5,7 @@ import os
 
 this_directory = Path(__file__).parent
 
-VERSION = '0.0.5'
+VERSION = '0.0.6'
 DESCRIPTION = 'Python wrapper for Genius API'
 long_description = (this_directory / "README.md").read_text()
 
