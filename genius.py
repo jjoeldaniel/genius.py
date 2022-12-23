@@ -1,5 +1,4 @@
 import requests
-from util import *
 from track import Track
 
 class Genius:
