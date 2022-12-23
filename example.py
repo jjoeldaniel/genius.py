@@ -10,5 +10,7 @@ client_access_token = os.getenv('CLIENT_ACCESS_TOKEN')
 
 genius = Genius(client_id=client_id, client_secret=client_secret, client_access_token=client_access_token)
 
-for track in genius.search('Kendrick Lamar'):
-    print(track.release_date())
+for track in genius.search(query='Kendrick Lamar'):
+    print(track)
+
+print(genius.search_by_id(378195).url)
