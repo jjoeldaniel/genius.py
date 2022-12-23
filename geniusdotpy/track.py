@@ -9,6 +9,11 @@ class Track:
         self.full_title = track_info['full_title']
         self.url = track_info['url']
         self.id = track_info['id']
+        self.featured_artists = track_info['featured_artists']
+        self.header_image_url = track_info['header_image_url']
+        self.path = track_info['path']
+        self.art_image_url = track_info['song_art_image_url']
+        self.page_views = track_info['stats']['pageviews']
 
     def __str__(self):
         return self.full_title
