@@ -1,7 +1,7 @@
 import requests
 from track import Track
 
-class Genius:
+class GeniusBuilder:
 
     endpoint = 'https://api.genius.com'
 
