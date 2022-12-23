@@ -1,5 +1,5 @@
 import requests
-import json
+from util import *
 from track import Track
 
 class Genius:
@@ -11,6 +11,13 @@ class Genius:
         self.client_secret = client_secret
         self.client_access_token = client_access_token
 
+    def search_by_id(self, track_id):
+        endpoint = f'{self.endpoint}/songs/{track_id}'
+        headers = {'Authorization': f'Bearer {self.client_access_token}'}
+
+        response = requests.get(endpoint, headers=headers)
+        return Track(track_info=response.json()['response']['song'])
+
     def search(self, query):
         endpoint = f'{self.endpoint}/search'
         data = {'q': query}
@@ -21,7 +28,7 @@ class Genius:
         tracks = []
 
         for hits in response.json()['response']['hits']:
-            track = Track(track_info=hits)
+            track = Track(track_info=hits['result'])
             tracks.append(track)
 
         return tracks
