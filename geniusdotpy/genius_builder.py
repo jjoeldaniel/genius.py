@@ -12,6 +12,8 @@ class GeniusBuilder:
         self.client_access_token = client_access_token
 
     def search_by_id(self, track_id):
+        """Returns a Track object with the given track ID"""
+
         endpoint = f'{self.endpoint}/songs/{track_id}'
         headers = {'Authorization': f'Bearer {self.client_access_token}'}
 
@@ -19,6 +21,8 @@ class GeniusBuilder:
         return Track(track_info=response.json()['response']['song'])
 
     def search(self, query):
+        """Returns a list of Track objects with the given query"""
+
         endpoint = f'{self.endpoint}/search'
         data = {'q': query}
         headers = {'Authorization': f'Bearer {self.client_access_token}'}
@@ -34,6 +38,8 @@ class GeniusBuilder:
         return tracks
 
     def search_artist(self, artist_id):
+        """Returns an Artist object with the given artist ID"""
+
         endpoint = f'{self.endpoint}/artists/{artist_id}/songs'
         headers = {'Authorization': f'Bearer {self.client_access_token}'}
 
