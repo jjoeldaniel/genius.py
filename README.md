@@ -1,5 +1,7 @@
 # **genius.py**
 
+[![PyPI version](https://badge.fury.io/py/geniusdotpy.svg)](https://pypi.org/project/geniusdotpy/)
+
 > Python wrapper for Genius API
 
 With genius.py, enjoy an easy-to-use interface to interact with [Genius API](https://docs.genius.com)
