@@ -6,12 +6,17 @@ class Track:
         self.track_info = track_info
         self.name = track_info['title_with_featured']
         self.artist = track_info['primary_artist']['name']
+        self.title = track_info['title']
+        self.title_with_featured = track_info['title_with_featured']
         self.full_title = track_info['full_title']
         self.url = track_info['url']
         self.id = track_info['id']
+        self.language = track_info['language']
         self.featured_artists = track_info['featured_artists']
+        self.header_image_thumbnail_url = track_info['header_image_thumbnail_url']
         self.header_image_url = track_info['header_image_url']
         self.path = track_info['path']
+        self.song_art_image_thumbnail_url = track_info['song_art_image_thumbnail_url']
         self.art_image_url = track_info['song_art_image_url']
         self.page_views = track_info['stats']['pageviews']
 
