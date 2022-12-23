@@ -13,10 +13,10 @@ LONG_DESCRIPTION = 'Python wrapper for Genius API'
 
 # Setting up
 setup(
-    name="genius.py",
+    name="geniusdotpy",
     version=VERSION,
     author="jjoeldaniel",
-    author_email="<mail@joeldanielrico@gmail.com>",
+    author_email="<joeldanielrico@gmail.com>",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=long_description,
