@@ -26,6 +26,16 @@ With genius.py, enjoy an easy-to-use interface to interact with [Genius API](htt
 
 To get started...
 
+1. Get your Client ID, Secret, and Access Token [here](https://genius.com/api-clients)
+
+2. Create a new *GeniusBuilder* object
+
+        genius = GeniusBuilder(client_id=client_id, client_secret=client_secret, client_access_token=client_access_token)
+
+3. ???
+
+4. Profit
+
 ## References
 
 [Genius API](https://docs.genius.com)
