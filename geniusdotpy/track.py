@@ -48,9 +48,11 @@ class Track:
         return self.full_title
 
     def get_artist_id(self):
+        """Returns the artist ID of the primary artist of the track"""
         return self.track_info['primary_artist']['id']
 
     def release_date(self):
+        """Returns the release date of the track as a datetime object"""
 
         if 'release_date' not in self.track_info:
             return datetime.datetime(1, 1, 1)
