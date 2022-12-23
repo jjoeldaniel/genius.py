@@ -51,6 +51,10 @@ class Track:
         return self.track_info['primary_artist']['id']
 
     def release_date(self):
+
+        if 'release_date' not in self.track_info:
+            return datetime.datetime(1, 1, 1)
+
         year = self.track_info['release_date_components']['year']
         month = self.track_info['release_date_components']['month']
         day = self.track_info['release_date_components']['day']
