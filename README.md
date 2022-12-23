@@ -1,6 +1,7 @@
 # **genius.py**
 
 [![PyPI version](https://badge.fury.io/py/geniusdotpy.svg)](https://pypi.org/project/geniusdotpy/)
+![Python 3.x version](https://img.shields.io/badge/python-3.x-brightgreen.svg)
 
 > Python wrapper for Genius API
 
