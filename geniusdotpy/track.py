@@ -14,23 +14,35 @@ class Track:
         self.id = track_info['id']
         self.featured_artists = track_info['featured_artists']
 
-        if 'label' in track_info:
+        if 'language' in track_info:
             self.language = track_info['language']
+        else:
+            self.language = None
         
         if 'header_image_thumbnail_url' in track_info:
             self.header_image_thumbnail_url = track_info['header_image_thumbnail_url']
+        else:
+            self.header_image_thumbnail_url = None
 
         if 'header_image_url' in track_info:
             self.header_image_url = track_info['header_image_url']
+        else:
+            self.header_image_url = None
 
         if 'song_art_image_thumbnail_url' in track_info:
             self.song_art_image_thumbnail_url = track_info['song_art_image_thumbnail_url']
+        else:
+            self.song_art_image_thumbnail_url = None
         
         if 'song_art_image_url' in track_info:
             self.art_image_url = track_info['song_art_image_url']
+        else:
+            self.art_image_url = None
 
         if 'pageviews' in track_info['stats']:
             self.page_views = track_info['stats']['pageviews']
+        else:
+            self.page_views = None
 
     def __str__(self):
         return self.full_title
