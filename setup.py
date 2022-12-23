@@ -1,15 +1,13 @@
 from setuptools import setup, find_packages
+from pathlib import Path
 import codecs
 import os
 
-here = os.path.abspath(os.path.dirname(__file__))
-
-with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
-    long_description = "\n" + fh.read()
+this_directory = Path(__file__).parent
 
 VERSION = '0.0.4'
 DESCRIPTION = 'Python wrapper for Genius API'
-LONG_DESCRIPTION = 'Python wrapper for Genius API'
+long_description = (this_directory / "README.md").read_text()
 
 # Setting up
 setup(
