@@ -5,7 +5,7 @@ import os
 
 this_directory = Path(__file__).parent
 
-VERSION = '0.1.5'
+VERSION = '0.1.5.1'
 DESCRIPTION = 'Python wrapper for Genius API'
 long_description = (this_directory / "README.md").read_text()
 
@@ -20,7 +20,7 @@ setup(
     long_description=long_description,
     url="https://github.com/jjoeldaniel/genius.py",
     packages=find_packages(),
-    install_requires=['requests'],
+    install_requires=['requests', 'beautifulsoup4'],
     keywords=['python', 'genius', 'api-wrapper'],
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
