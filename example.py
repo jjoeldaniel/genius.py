@@ -17,7 +17,7 @@ print(artist.tracks[0])
 
 # Returns song matching song ID
 track = genius.search_by_id(378195)
-print(track)
+print(f'{track}\nAlbum: {track.album}')
 
 # Prints the lyrics of the song
-print(track.lyrics)
+print(f'Lyrics:\n{track.lyrics}')
