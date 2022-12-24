@@ -1,5 +1,6 @@
 import datetime
 
+
 class Track:
 
     def __init__(self, track_info):
@@ -20,7 +21,7 @@ class Track:
             self.language = track_info['language']
         else:
             self.language = None
-        
+
         if 'header_image_thumbnail_url' in track_info:
             self.header_image_thumbnail_url = track_info['header_image_thumbnail_url']
         else:
@@ -35,7 +36,7 @@ class Track:
             self.song_art_image_thumbnail_url = track_info['song_art_image_thumbnail_url']
         else:
             self.song_art_image_thumbnail_url = None
-        
+
         if 'song_art_image_url' in track_info:
             self.art_image_url = track_info['song_art_image_url']
         else:

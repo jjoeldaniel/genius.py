@@ -1,5 +1,6 @@
 from track import Track
 
+
 class Artist:
 
     def __init__(self, tracks_info):

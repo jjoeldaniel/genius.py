@@ -2,8 +2,8 @@ import requests
 from track import Track
 from artist import Artist
 
-class GeniusBuilder:
 
+class GeniusBuilder:
     endpoint = 'https://api.genius.com'
 
     def __init__(self, client_id, client_secret, client_access_token):
