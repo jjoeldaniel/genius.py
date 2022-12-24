@@ -22,5 +22,5 @@ print(genius.search_by_id(378195))
 
 # Returns an Artist object containing all songs by artist
 artist = genius.search_artist(artist_id=16775)
-for song in artist.list_tracks():
+for song in artist.tracks:
     print(song)
