@@ -6,6 +6,7 @@ class Track:
         self.track_info = track_info
         self.name = track_info['title_with_featured']
         self.artist = track_info['primary_artist']['name']
+        self.artist_id = track_info['primary_artist']['id']
         self.title = track_info['title']
         self.path = track_info['path']
         self.title_with_featured = track_info['title_with_featured']
@@ -46,10 +47,6 @@ class Track:
 
     def __str__(self):
         return self.full_title
-
-    def get_artist_id(self):
-        """Returns the artist ID of the primary artist of the track"""
-        return self.track_info['primary_artist']['id']
 
     def release_date(self):
         """Returns the release date of the track as a datetime object"""
