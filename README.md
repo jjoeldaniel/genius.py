@@ -2,6 +2,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/geniusdotpy)](https://pypi.org/project/geniusdotpy/)
 [![Python 3.x version](https://img.shields.io/badge/python-3.x-brightgreen.svg)](https://www.python.org/downloads/)
+[![Wiki Link](https://img.shields.io/badge/wiki-documentation-forestgreen)](https://github.com/jjoeldaniel/genius.py/wiki)
 
 > Python wrapper for Genius API
 
