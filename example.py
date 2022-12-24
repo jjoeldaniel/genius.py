@@ -1,6 +1,6 @@
 from geniusdotpy.genius_builder import GeniusBuilder
 
-# Get environment variables
+# Get your client ID, client secret, and client access token from https://genius.com/api-clients
 client_id = 'CLIENT_ID'
 client_secret = 'CLIENT_SECRET'
 client_access_token = 'CLIENT_ACCESS_TOKEN'
