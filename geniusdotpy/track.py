@@ -6,7 +6,6 @@ class Track:
 
     def __init__(self, track_info):
         self.track_info = track_info
-        self.name = track_info['title_with_featured']
         self.artist = track_info['primary_artist']['name']
         self.artist_id = track_info['primary_artist']['id']
         self.title = track_info['title']
