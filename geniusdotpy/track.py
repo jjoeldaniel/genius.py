@@ -15,7 +15,7 @@ class Track:
         self.url = track_info['url']
         self.id = track_info['id']
         self.featured_artists = track_info['featured_artists']
-        self.date = None
+        self.date = datetime.datetime(1, 1, 1)
 
         if 'language' in track_info:
             self.language = track_info['language']
@@ -53,13 +53,12 @@ class Track:
     def release_date(self):
         """Returns the release date of the track as a datetime object"""
 
-        if 'release_date' not in self.track_info:
-            return datetime.datetime(1, 1, 1)
+        if self.date.year != 1:
+            return self.date
 
-        if self.date is None:
-            year = self.track_info['release_date_components']['year']
-            month = self.track_info['release_date_components']['month']
-            day = self.track_info['release_date_components']['day']
-            self.date = datetime.datetime(year, month, day)
+        year = self.track_info['release_date_components']['year']
+        month = self.track_info['release_date_components']['month']
+        day = self.track_info['release_date_components']['day']
+        self.date = datetime.datetime(year, month, day)
 
         return self.date
