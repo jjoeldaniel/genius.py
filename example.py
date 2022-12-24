@@ -1,5 +1,5 @@
 import os
-from genius_builder import *
+from geniusdotpy.genius_builder import GeniusBuilder
 from dotenv import load_dotenv
 
 # Example uses dotenv to load environment variables from .env file
