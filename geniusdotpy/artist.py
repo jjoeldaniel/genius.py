@@ -5,8 +5,4 @@ class Artist:
 
     def __init__(self, tracks_info):
         self.tracks_info = tracks_info
-        self.tracks = []
-
-        for track in self.tracks_info:
-            track = Track(track_info=track)
-            self.tracks.append(track)
+        self.tracks = [Track(track_info=track_info) for track_info in self.tracks_info]
