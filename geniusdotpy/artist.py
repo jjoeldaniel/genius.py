@@ -1,4 +1,4 @@
-from track import *
+from geniusdotpy.track import Track
 
 
 class Artist:
