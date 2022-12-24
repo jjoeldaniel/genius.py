@@ -1,9 +1,9 @@
 from geniusdotpy.genius_builder import GeniusBuilder
 
 # Get your client ID, client secret, and client access token from https://genius.com/api-clients
-client_id="Yt3PHylqmH84fnroVLfj85G0jO_u3ytyRfrBwd5OK7G40pro2kfzbLoBn0FpG33v"
-client_secret="4lIFWRO-6Va200lMq-1jcu3jBZS5sXZ6PtJ1r7LzGfAtoTKN_--bVLiQlrFk6BnzWU3zgkzIrkOGuDF_H0ETOA"
-client_access_token="I8riIsMnEjEz49W6J1S6J0ni6wTPM4lvny4MOFavO3UumBHlikIIdkpm6y-Cmz14"
+client_id="id"
+client_secret="secret"
+client_access_token="token"
 
 # Create a GeniusBuilder object
 genius = GeniusBuilder(client_id=client_id, client_secret=client_secret, client_access_token=client_access_token)
