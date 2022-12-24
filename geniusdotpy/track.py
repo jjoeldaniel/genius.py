@@ -15,7 +15,7 @@ class Track:
         self.url = track_info['url']
         self.id = track_info['id']
         self.featured_artists = track_info['featured_artists']
-        self.date = datetime.datetime(1, 1, 1)
+        self.__date = datetime.datetime(1, 1, 1)
         self.lyrics = Lyrics(track_url=self.url).content
         self.lyrics_by_line = self.lyrics.split('\n')
 
@@ -55,12 +55,12 @@ class Track:
     def release_date(self):
         """Returns the release date of the track as a datetime object"""
 
-        if self.date.year != 1:
-            return self.date
+        if self.__date.year != 1:
+            return self.__date
 
         year = self.track_info['release_date_components']['year']
         month = self.track_info['release_date_components']['month']
         day = self.track_info['release_date_components']['day']
-        self.date = datetime.datetime(year, month, day)
+        self.__date = datetime.datetime(year, month, day)
 
-        return self.date
+        return self.__date
