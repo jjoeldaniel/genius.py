@@ -14,6 +14,7 @@ class Track:
         self.url = track_info['url']
         self.id = track_info['id']
         self.featured_artists = track_info['featured_artists']
+        self.date = None
 
         if 'language' in track_info:
             self.language = track_info['language']
@@ -54,10 +55,10 @@ class Track:
         if 'release_date' not in self.track_info:
             return datetime.datetime(1, 1, 1)
 
-        year = self.track_info['release_date_components']['year']
-        month = self.track_info['release_date_components']['month']
-        day = self.track_info['release_date_components']['day']
+        if self.date is None:
+            year = self.track_info['release_date_components']['year']
+            month = self.track_info['release_date_components']['month']
+            day = self.track_info['release_date_components']['day']
+            self.date = datetime.datetime(year, month, day)
 
-        date = datetime.datetime(year, month, day)
-
-        return date
+        return self.date
