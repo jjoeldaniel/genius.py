@@ -44,4 +44,10 @@ class GeniusBuilder:
         headers = {'Authorization': f'Bearer {self.client_access_token}'}
 
         response = requests.get(endpoint, headers=headers)
-        return Artist(tracks_info=response.json()['response']['songs'])
+        tracks_info = response.json()['response']['songs']
+
+        endpoint = f'{self.endpoint}/artists/{artist_id}'
+        response = requests.get(endpoint, headers=headers)
+        artist_info = response.json()['response']['artist']
+
+        return Artist(artist_info=artist_info, tracks_info=tracks_info)
