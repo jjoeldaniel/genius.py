@@ -20,6 +20,7 @@ With genius.py, enjoy an easy-to-use interface to interact with [Genius API](htt
 
 - Feature rich interface
 - Easy to use
+- Lyrics web scraper
 
 ## Install
 
@@ -48,6 +49,8 @@ To get started...
 ## References
 
 [Genius API](https://docs.genius.com)
+
+[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 
 ---
 
