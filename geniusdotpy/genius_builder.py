@@ -1,6 +1,6 @@
 import requests
-from track import Track
-from artist import Artist
+from track import *
+from artist import *
 
 
 class GeniusBuilder:

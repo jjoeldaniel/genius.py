@@ -1,4 +1,4 @@
-from track import Track
+from track import *
 
 
 class Artist:
