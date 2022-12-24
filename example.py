@@ -1,15 +1,9 @@
-import os
 from geniusdotpy.genius_builder import GeniusBuilder
-from dotenv import load_dotenv
-
-# Example uses dotenv to load environment variables from .env file
-# See https://pypi.org/project/python-dotenv/
-load_dotenv()
 
 # Get environment variables
-client_id = os.getenv('CLIENT_ID')
-client_secret = os.getenv('CLIENT_SECRET')
-client_access_token = os.getenv('CLIENT_ACCESS_TOKEN')
+client_id = 'CLIENT_ID'
+client_secret = 'CLIENT_SECRET'
+client_access_token = 'CLIENT_ACCESS_TOKEN'
 
 # Create a GeniusBuilder object
 genius = GeniusBuilder(client_id=client_id, client_secret=client_secret, client_access_token=client_access_token)
