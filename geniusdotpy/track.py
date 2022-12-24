@@ -1,5 +1,6 @@
 import datetime
 from geniusdotpy.lyrics import Lyrics
+from geniusdotpy.album import Album
 
 
 class Track:
@@ -18,6 +19,9 @@ class Track:
         self.__date = datetime.datetime(1, 1, 1)
         self.lyrics = Lyrics(track_url=self.url).content
         self.lyrics_by_line = self.lyrics.split('\n')
+
+        if 'album' in track_info:
+            self.album = Album(album_info=track_info['album'])
 
         if 'language' in track_info:
             self.language = track_info['language']
