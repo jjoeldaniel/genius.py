@@ -1,12 +1,10 @@
 from geniusdotpy.genius_builder import GeniusBuilder
 
-# Get your client ID, client secret, and client access token from https://genius.com/api-clients
-client_id="id"
-client_secret="secret"
+# Get your client access token from https://genius.com/api-clients
 client_access_token="token"
 
 # Create a GeniusBuilder object
-genius = GeniusBuilder(client_id=client_id, client_secret=client_secret, client_access_token=client_access_token)
+genius = GeniusBuilder(client_access_token=client_access_token)
 
 # Returns a list of songs containing query
 print(genius.search(query='Kendrick Lamar')[0])
