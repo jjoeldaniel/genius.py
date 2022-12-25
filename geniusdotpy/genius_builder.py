@@ -7,13 +7,27 @@ from geniusdotpy.album import Album
 class GeniusBuilder:
     endpoint = 'https://api.genius.com'
 
-    def __init__(self, client_id, client_secret, client_access_token):
-        self.client_id = client_id
-        self.client_secret = client_secret
+    def __init__(self, client_access_token):
+        """GeniusBuilder constructor.
+        
+        Keyword arguments:
+            client_access_token -- The client access token from https://genius.com/api-clients
+
+        Returns:
+            GeniusBuilder object
+        """
+
         self.client_access_token = client_access_token
 
     def search_by_id(self, track_id):
-        """Returns a Track object with the given track ID"""
+        """Search for a track by ID.
+
+        Keyword arguments:
+            track_id -- The ID of the song
+
+        Returns:
+            Track object
+        """
 
         endpoint = f'{self.endpoint}/songs/{track_id}'
         headers = {'Authorization': f'Bearer {self.client_access_token}'}
@@ -24,7 +38,14 @@ class GeniusBuilder:
         return Track(track_info=response.json()['response']['song'])
 
     def search(self, query):
-        """Returns a list of Track objects with the given query"""
+        """Search for a track by query.
+        
+        Keyword arguments:
+            query -- The query to search for
+        
+        Returns:
+            List of Track objects
+        """
 
         endpoint = f'{self.endpoint}/search'
         data = {'q': query}
@@ -42,7 +63,14 @@ class GeniusBuilder:
         return tracks
 
     def search_artist(self, artist_id):
-        """Returns an Artist object with the given artist ID"""
+        """Search for an artist by ID.
+        
+        Keyword arguments:
+            artist_id -- The ID of the artist
+
+        Returns:
+            Artist object
+        """
 
         endpoint = f'{self.endpoint}/artists/{artist_id}/songs'
         headers = {'Authorization': f'Bearer {self.client_access_token}'}
@@ -59,7 +87,14 @@ class GeniusBuilder:
         return Artist(artist_info=artist_info, tracks_info=tracks_info)
 
     def search_album(self, album_id):
-        """Returns an Album object with the given album ID"""
+        """Search for an album by ID.
+        
+        Keyword arguments:
+            album_id -- The ID of the album
+
+        Returns:
+            Album object
+        """
 
         endpoint = f'{self.endpoint}/albums/{album_id}'
         headers = {'Authorization': f'Bearer {self.client_access_token}'}
