@@ -3,3 +3,4 @@ from geniusdotpy.artist import Artist
 from geniusdotpy.track import Track
 from geniusdotpy.lyrics import Lyrics
 from geniusdotpy.album import Album
+from geniusdotpy.utils import *
