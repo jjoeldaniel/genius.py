@@ -33,14 +33,14 @@ pip install geniusdotpy
 
 To get started...
 
-1. Get your Client ID, Secret, and Access Token [here](https://genius.com/api-clients)
+1. Get your Client Access Token [here](https://genius.com/api-clients)
 
 2. Create a new *GeniusBuilder* object
 
     ```python
     from geniusdotpy.genius_builder import GeniusBuilder
 
-    genius = GeniusBuilder(client_id=client_id, client_secret=client_secret, client_access_token=client_access_token)
+    genius = GeniusBuilder(client_access_token=client_access_token)
     ```
 
 3. ???
