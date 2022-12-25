@@ -67,7 +67,11 @@ class Track:
         return self.full_title
 
     def to_json(self):
-        """Returns a JSON object of the track"""
+        """Convert track info to JSON.
+        
+        Returns:
+            JSON object
+        """
 
         return format_json(self.track_info)
 

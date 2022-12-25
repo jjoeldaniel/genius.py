@@ -14,6 +14,10 @@ class Artist:
         self.path = self.artist_info['api_path']
 
     def to_json(self):
-        """Returns a JSON object of the artist"""
+        """Convert artist info to JSON.
+
+        Returns:
+            JSON object
+        """
 
         return format_json(self.artist_info)
