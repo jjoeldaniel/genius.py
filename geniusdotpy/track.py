@@ -76,7 +76,11 @@ class Track:
         return format_json(self.track_info)
 
     def release_date(self):
-        """Returns the release date of the track as a datetime object"""
+        """Get the release date of the track.
+        
+        Returns:
+            datetime object
+        """
 
         if self.__date.year != 1:
             return self.__date
