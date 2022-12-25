@@ -1,4 +1,5 @@
 from geniusdotpy.track import Track
+from geniusdotpy.utils import *
 
 
 class Artist:
@@ -11,3 +12,8 @@ class Artist:
         self.name = self.artist_info['name']
         self.url = self.artist_info['url']
         self.path = self.artist_info['api_path']
+
+    def to_json(self):
+        """Returns a JSON object of the artist"""
+
+        return format_json(self.artist_info)

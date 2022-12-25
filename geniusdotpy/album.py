@@ -1,3 +1,5 @@
+from geniusdotpy.utils import *
+
 class Album:
 
     def __init__(self, album_info):
@@ -10,3 +12,8 @@ class Album:
 
     def __str__(self):
         return self.name
+
+    def to_json(self):
+        """Returns a JSON object of the album"""
+
+        return format_json(self.album_info)

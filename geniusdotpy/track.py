@@ -1,6 +1,7 @@
 import datetime
 from geniusdotpy.lyrics import Lyrics
 from geniusdotpy.album import Album
+from geniusdotpy.utils import *
 
 
 class Track:
@@ -64,6 +65,11 @@ class Track:
 
     def __str__(self):
         return self.full_title
+
+    def to_json(self):
+        """Returns a JSON object of the track"""
+
+        return format_json(self.track_info)
 
     def release_date(self):
         """Returns the release date of the track as a datetime object"""
