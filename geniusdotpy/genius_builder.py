@@ -1,6 +1,7 @@
 import requests
 from geniusdotpy.track import Track
 from geniusdotpy.artist import Artist
+from geniusdotpy.album import Album
 
 
 class GeniusBuilder:
@@ -18,6 +19,8 @@ class GeniusBuilder:
         headers = {'Authorization': f'Bearer {self.client_access_token}'}
 
         response = requests.get(endpoint, headers=headers)
+        response.raise_for_status()
+        
         return Track(track_info=response.json()['response']['song'])
 
     def search(self, query):
@@ -28,6 +31,7 @@ class GeniusBuilder:
         headers = {'Authorization': f'Bearer {self.client_access_token}'}
 
         response = requests.get(endpoint, params=data, headers=headers)
+        response.raise_for_status()
 
         tracks = []
 
@@ -44,10 +48,25 @@ class GeniusBuilder:
         headers = {'Authorization': f'Bearer {self.client_access_token}'}
 
         response = requests.get(endpoint, headers=headers)
+        response.raise_for_status()
         tracks_info = response.json()['response']['songs']
 
         endpoint = f'{self.endpoint}/artists/{artist_id}'
         response = requests.get(endpoint, headers=headers)
+        response.raise_for_status()
         artist_info = response.json()['response']['artist']
 
         return Artist(artist_info=artist_info, tracks_info=tracks_info)
+
+    def search_album(self, album_id):
+        """Returns an Album object with the given album ID"""
+
+        endpoint = f'{self.endpoint}/albums/{album_id}/songs'
+        headers = {'Authorization': f'Bearer {self.client_access_token}'}
+
+        response = requests.get(endpoint, headers=headers)
+        response.raise_for_status()
+
+        album_info = response.json()['response']['album']
+
+        return Album(album_info=album_info)
