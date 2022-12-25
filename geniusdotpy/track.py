@@ -53,6 +53,15 @@ class Track:
         else:
             self.page_views = None
 
+        if 'media' in track_info:
+            for media in track_info['media']:
+                if media['provider'] == 'youtube':
+                    self.youtube_url = media['url']
+                if media['provider'] == 'spotify':
+                    self.spotify_url = media['url']
+                if media['provider'] == 'soundcloud':
+                    self.soundcloud_url = media['url']
+
     def __str__(self):
         return self.full_title
 
