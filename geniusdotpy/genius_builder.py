@@ -20,7 +20,7 @@ class GeniusBuilder:
 
         response = requests.get(endpoint, headers=headers)
         response.raise_for_status()
-        
+
         return Track(track_info=response.json()['response']['song'])
 
     def search(self, query):
@@ -61,7 +61,7 @@ class GeniusBuilder:
     def search_album(self, album_id):
         """Returns an Album object with the given album ID"""
 
-        endpoint = f'{self.endpoint}/albums/{album_id}/songs'
+        endpoint = f'{self.endpoint}/albums/{album_id}'
         headers = {'Authorization': f'Bearer {self.client_access_token}'}
 
         response = requests.get(endpoint, headers=headers)
