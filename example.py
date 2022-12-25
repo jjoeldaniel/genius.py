@@ -16,8 +16,16 @@ artist = genius.search_artist(artist_id=16775)
 print(artist.tracks[0])
 
 # Returns song matching song ID
-track = genius.search_by_id(378195)
-print(f'{track}\nAlbum: {track.album}')
+track = genius.search_by_id(185931)
+print(track)
+if hasattr(track, 'album'):
+    print(f'Album: {track.album}')
+if hasattr(track, 'youtube_url'):
+    print(f'Youtube URL: {track.youtube_url}')
+if hasattr(track, 'spotify_url'):
+    print(f'Spotify URL: {track.spotify_url}')
+if hasattr(track, 'soundcloud_url'):
+    print(f'Soundcloud URL: {track.soundcloud_url}')
 
 # Prints the lyrics of the song
 print(f'Lyrics:\n{track.lyrics}')
