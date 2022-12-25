@@ -29,3 +29,6 @@ if hasattr(track, 'soundcloud_url'):
 
 # Prints the lyrics of the song
 print(f'Lyrics:\n{track.lyrics}')
+
+# Print track's album json
+print(track.album.to_json())
