@@ -32,3 +32,7 @@ print(f'Lyrics:\n{track.lyrics}')
 
 # Print track's album json
 print(track.album.to_json())
+
+# Search for an album
+album = genius.search_album(album_id=378195)
+print(album.name)
