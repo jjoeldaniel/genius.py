@@ -23,6 +23,8 @@ class Track:
 
         if 'album' in track_info:
             self.album = Album(album_info=track_info['album'])
+        else:
+            self.album = None
 
         if 'language' in track_info:
             self.language = track_info['language']
@@ -58,10 +60,18 @@ class Track:
             for media in track_info['media']:
                 if media['provider'] == 'youtube':
                     self.youtube_url = media['url']
+                else:
+                    self.youtube_url = None
+
                 if media['provider'] == 'spotify':
                     self.spotify_url = media['url']
+                else:
+                    self.spotify_url = None
+
                 if media['provider'] == 'soundcloud':
                     self.soundcloud_url = media['url']
+                else:
+                    self.soundcloud_url = None
 
     def __str__(self):
         return self.full_title
