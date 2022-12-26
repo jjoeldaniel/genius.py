@@ -10,6 +10,8 @@ class Album:
 
         if 'cover_art_url' in album_info:
             self.cover_art_url = album_info['cover_art_url']
+        else:
+            self.cover_art_url = None
 
         # Fallback name to full_title if name is not present and vice versa
         if 'name' in album_info:
