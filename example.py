@@ -1,7 +1,7 @@
 from geniusdotpy.genius_builder import GeniusBuilder
 
 # Get your client access token from https://genius.com/api-clients
-client_access_token="token"
+client_access_token = "token"
 
 # Create a GeniusBuilder object
 genius = GeniusBuilder(client_access_token=client_access_token)
@@ -34,3 +34,4 @@ print(track.album.to_json())
 # Search for an album
 album = genius.search_album(album_id=378195)
 print(album.name)
+
