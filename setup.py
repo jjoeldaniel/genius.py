@@ -5,7 +5,7 @@ import os
 
 this_directory = Path(__file__).parent
 
-VERSION = "1.0"
+VERSION = "0.9.0"
 DESCRIPTION = "Python wrapper for Genius API"
 long_description = (this_directory / "README.md").read_text()
 
@@ -23,7 +23,7 @@ setup(
     install_requires=["requests", "beautifulsoup4"],
     keywords=["python", "genius", "api-wrapper"],
     classifiers=[
-        "Development Status :: 2 - Pre-Alpha",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
         "Operating System :: Unix",
