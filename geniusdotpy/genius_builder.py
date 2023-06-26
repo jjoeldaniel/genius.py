@@ -6,6 +6,7 @@ from geniusdotpy.album import Album
 
 class GeniusBuilder:
     endpoint = "https://api.genius.com"
+    """Genius API endpoint"""
 
     def __init__(self, client_access_token):
         """GeniusBuilder constructor.
@@ -17,7 +18,7 @@ class GeniusBuilder:
             GeniusBuilder object
         """
 
-        self.client_access_token = client_access_token
+        self.headers = {"Authorization": f"Bearer {client_access_token}"}
 
     def search_by_id(self, track_id):
         """Search for a track by ID.
@@ -30,9 +31,8 @@ class GeniusBuilder:
         """
 
         endpoint = f"{self.endpoint}/songs/{track_id}"
-        headers = {"Authorization": f"Bearer {self.client_access_token}"}
 
-        response = requests.get(endpoint, headers=headers)
+        response = requests.get(endpoint, headers=self.headers)
         response.raise_for_status()
 
         return Track(track_info=response.json()["response"]["song"])
@@ -49,9 +49,8 @@ class GeniusBuilder:
 
         endpoint = f"{self.endpoint}/search"
         data = {"q": query}
-        headers = {"Authorization": f"Bearer {self.client_access_token}"}
 
-        response = requests.get(endpoint, params=data, headers=headers)
+        response = requests.get(endpoint, params=data, headers=self.headers)
         response.raise_for_status()
 
         tracks = []
@@ -73,14 +72,13 @@ class GeniusBuilder:
         """
 
         endpoint = f"{self.endpoint}/artists/{artist_id}/songs"
-        headers = {"Authorization": f"Bearer {self.client_access_token}"}
 
-        response = requests.get(endpoint, headers=headers)
+        response = requests.get(endpoint, headers=self.headers)
         response.raise_for_status()
         tracks_info = response.json()["response"]["songs"]
 
         endpoint = f"{self.endpoint}/artists/{artist_id}"
-        response = requests.get(endpoint, headers=headers)
+        response = requests.get(endpoint, headers=self.headers)
         response.raise_for_status()
         artist_info = response.json()["response"]["artist"]
 
@@ -97,9 +95,8 @@ class GeniusBuilder:
         """
 
         endpoint = f"{self.endpoint}/albums/{album_id}"
-        headers = {"Authorization": f"Bearer {self.client_access_token}"}
 
-        response = requests.get(endpoint, headers=headers)
+        response = requests.get(endpoint, headers=self.headers)
         response.raise_for_status()
 
         album_info = response.json()["response"]["album"]
