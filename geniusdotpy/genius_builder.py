@@ -1,7 +1,7 @@
 import requests
-from geniusdotpy.track import Track
 from geniusdotpy.artist import Artist
-from geniusdotpy.album import Album
+from geniusdotpy.track import Track
+from geniusdotpy.utils import SortType
 
 
 class GeniusBuilder:
@@ -20,11 +20,11 @@ class GeniusBuilder:
 
         self.headers = {"Authorization": f"Bearer {client_access_token}"}
 
-    def search_by_id(self, track_id):
+    def search_track_by_id(self, track_id):
         """Search for a track by ID.
 
         Keyword arguments:
-            track_id -- The ID of the song
+            track_id -- The ID of the track
 
         Returns:
             Track object
@@ -37,30 +37,6 @@ class GeniusBuilder:
 
         return Track(track_info=response.json()["response"]["song"])
 
-    def search(self, query):
-        """Search for a track by query.
-
-        Keyword arguments:
-            query -- The query to search for
-
-        Returns:
-            List of Track objects
-        """
-
-        endpoint = f"{self.endpoint}/search"
-        data = {"q": query}
-
-        response = requests.get(endpoint, params=data, headers=self.headers)
-        response.raise_for_status()
-
-        tracks = []
-
-        for hits in response.json()["response"]["hits"]:
-            track = Track(track_info=hits["result"])
-            tracks.append(track)
-
-        return tracks
-
     def search_artist(self, artist_id):
         """Search for an artist by ID.
 
@@ -71,34 +47,45 @@ class GeniusBuilder:
             Artist object
         """
 
-        endpoint = f"{self.endpoint}/artists/{artist_id}/songs"
-
-        response = requests.get(endpoint, headers=self.headers)
-        response.raise_for_status()
-        tracks_info = response.json()["response"]["songs"]
-
         endpoint = f"{self.endpoint}/artists/{artist_id}"
+
         response = requests.get(endpoint, headers=self.headers)
         response.raise_for_status()
-        artist_info = response.json()["response"]["artist"]
 
-        return Artist(artist_info=artist_info, tracks_info=tracks_info)
+        return Artist(track_info=response.json()["response"]["artist"])
 
-    def search_album(self, album_id):
-        """Search for an album by ID.
+    def search(self, query: str) -> Track:
+        """Search for a track by query.
 
         Keyword arguments:
-            album_id -- The ID of the album
+            query -- The query to search for
 
         Returns:
-            Album object
+            Track object
         """
 
-        endpoint = f"{self.endpoint}/albums/{album_id}"
+        endpoint = f"{self.endpoint}/search?q={query}"
 
         response = requests.get(endpoint, headers=self.headers)
         response.raise_for_status()
 
-        album_info = response.json()["response"]["album"]
+        tracks = list()
 
-        return Album(album_info=album_info)
+        for hits in response.json()["response"]["hits"]:
+            tracks.append(Track(track_info=hits["result"]))
+
+        return tracks
+
+    def search_track_by_artist(
+        self, artist_id: int, sort=SortType.POPULARITY, page=1, per_page=20
+    ) -> list:
+        endpoint = f"{self.endpoint}/artists/{artist_id}/songs?sort={sort.value}&per_page={per_page}&page={page}"
+        tracks = list()
+
+        response = requests.get(endpoint, headers=self.headers)
+        response.raise_for_status()
+
+        for song in response.json()["response"]["songs"]:
+            tracks.append(Track(track_info=song))
+
+        return tracks
