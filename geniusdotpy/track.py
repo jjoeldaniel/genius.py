@@ -1,7 +1,7 @@
 import datetime
 from geniusdotpy.lyrics import Lyrics
 from geniusdotpy.album import Album
-from geniusdotpy.utils import format_json
+import geniusdotpy.utils as utils
 
 
 class Track:
@@ -17,8 +17,7 @@ class Track:
         self.id = track_info["id"]
         self.featured_artists = track_info["featured_artists"]
         self.__date = datetime.datetime(1, 1, 1)
-        self.lyrics = Lyrics(track_url=self.url).content
-        self.lyrics_by_line = self.lyrics.split("\n")
+        self.lyrics = utils.retrieve_lyrics(self.url)
 
         if "album" in track_info:
             self.album = Album(album_info=track_info["album"])
@@ -84,7 +83,7 @@ class Track:
             JSON object
         """
 
-        return format_json(self.track_info)
+        return utils.format_json(self.track_info)
 
     def release_date(self):
         """Get the release date of the track.
