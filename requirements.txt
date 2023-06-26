@@ -1,3 +1,4 @@
 beautifulsoup4==4.11.1
-requests==2.31.0
+Requests==2.31.0
 setuptools==65.6.3
+pdoc==14.0.0
