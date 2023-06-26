@@ -1,11 +1,10 @@
 import datetime
-import json
 from geniusdotpy.album import Album
 from geniusdotpy.artist import Artist
 
 
 class Track:
-    def __init__(self, track_info: json):
+    def __init__(self, track_info: dict):
         """Track constructor.
 
         Keyword arguments:
@@ -15,35 +14,35 @@ class Track:
         self._track_info = track_info
         """JSON object containing track information."""
 
-        self.api_path = track_info["api_path"]
+        self.api_path: str = track_info["api_path"]
         """API path of the track."""
 
-        self.id = track_info["id"]
+        self.id: str = track_info["id"]
         """Genius.com Track ID.""" ""
 
-        self.url = track_info["url"]
+        self.url: str = track_info["url"]
         """Genius.com URL of the track."""
 
-        self.title = track_info["title"]
+        self.title: str = track_info["title"]
         """Track title."""
 
-        self.artist = Artist(track_info["primary_artist"])
+        self.artist: Artist = Artist(track_info["primary_artist"])
         """Track artist."""
 
         # Possibly null values
-        self.release_date = None
+        self.release_date: None | datetime.datetime = None
         """Track release date."""
 
-        self.youtube_url = None
+        self.youtube_url: None | str = None
         """Track YouTube URL."""
 
-        self.spotify_url = None
+        self.spotify_url: None | str = None
         """Track Spotify URL."""
 
-        self.soundcloud_url = None
+        self.soundcloud_url: None | str = None
         """Track Soundcloud URL."""
 
-        self.album = None
+        self.album: None | Album = None
         """Track album."""
 
         if "album" in track_info:

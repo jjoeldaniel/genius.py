@@ -8,7 +8,7 @@ class GeniusBuilder:
     endpoint = "https://api.genius.com"
     """Genius API endpoint"""
 
-    def __init__(self, client_access_token):
+    def __init__(self, client_access_token: str):
         """GeniusBuilder constructor.
 
         Keyword arguments:
@@ -20,7 +20,7 @@ class GeniusBuilder:
 
         self.headers = {"Authorization": f"Bearer {client_access_token}"}
 
-    def search_track_by_id(self, track_id):
+    def search_track_by_id(self, track_id: str):
         """Search for a track by ID.
 
         Keyword arguments:
@@ -37,7 +37,7 @@ class GeniusBuilder:
 
         return Track(track_info=response.json()["response"]["song"])
 
-    def search_artist(self, artist_id):
+    def search_artist(self, artist_id: str):
         """Search for an artist by ID.
 
         Keyword arguments:
@@ -54,7 +54,7 @@ class GeniusBuilder:
 
         return Artist(artist_info=response.json()["response"]["artist"])
 
-    def search(self, query: str) -> Track:
+    def search(self, query: str) -> list[Track]:
         """Search for a track by query.
 
         Keyword arguments:
@@ -69,7 +69,7 @@ class GeniusBuilder:
         response = requests.get(endpoint, headers=self.headers)
         response.raise_for_status()
 
-        tracks = list()
+        tracks: list[Track] = list()
 
         for hits in response.json()["response"]["hits"]:
             tracks.append(Track(track_info=hits["result"]))

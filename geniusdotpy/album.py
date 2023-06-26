@@ -1,22 +1,21 @@
-import json
 from geniusdotpy.artist import Artist
 
 
 class Album:
     """Album class"""
 
-    def __init__(self, album_info: json):
+    def __init__(self, album_info: dict):
         self.album_info = album_info
         """JSON object containing album information."""
 
-        self.name = album_info["name"]
+        self.name: str = album_info["name"]
         """Album name"""
 
-        self.url = album_info["url"]
+        self.url: str = album_info["url"]
         """Album URL"""
 
         # Default `full_title` to name
-        self.full_title = album_info["name"]
+        self.full_title: str = album_info["name"]
         """Album full title"""
 
         # Possibly null values
