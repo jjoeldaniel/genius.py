@@ -1,4 +1,6 @@
 beautifulsoup4==4.11.1
-Requests==2.31.0
+requests==2.31.0
+pytest==7.4.0
+build==0.10.0
 setuptools==65.6.3
 pdoc==14.0.0
