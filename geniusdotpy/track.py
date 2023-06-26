@@ -1,4 +1,5 @@
 import datetime
+from geniusdotpy import utils
 from geniusdotpy.album import Album
 from geniusdotpy.artist import Artist
 
@@ -22,6 +23,9 @@ class Track:
 
         self.url: str = track_info["url"]
         """Genius.com URL of the track."""
+
+        self.lyrics: str = utils.retrieve_lyrics(self.url)
+        """Track lyrics."""
 
         self.title: str = track_info["title"]
         """Track title."""
