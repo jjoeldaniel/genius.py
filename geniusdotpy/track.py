@@ -1,6 +1,5 @@
 import datetime
 import json
-import geniusdotpy.utils as utils
 from geniusdotpy.album import Album
 from geniusdotpy.artist import Artist
 
