@@ -16,7 +16,7 @@ class Album:
         # Possibly null values
         self.artist = None
 
-        if album_info["full_title"]:
+        if "full_title" in album_info:
             self.full_title = album_info["full_title"]
-        if album_info["artist"]:
+        if "artist" in album_info:
             self.artist = Artist(album_info["artist"])

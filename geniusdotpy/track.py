@@ -27,15 +27,15 @@ class Track:
         self.soundcloud_url = None
         self.album = None
 
-        if track_info["album"]:
+        if "album" in track_info:
             self.album = Album(track_info["album"])
 
-        if track_info["release_date"]:
+        if "release_date" in track_info:
             self.release_date = datetime.datetime.strptime(
                 track_info["release_date"], "%Y-%m-%d"
             )
 
-        if track_info["media"]:
+        if "media" in track_info:
             for provider in track_info["media"]:
                 if provider["provider"] == "youtube":
                     self.youtube_url = provider["url"]
