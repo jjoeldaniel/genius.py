@@ -1,6 +1,14 @@
+from enum import Enum
 import json
 from bs4 import BeautifulSoup
 import requests
+
+
+class SortType(Enum):
+    """Enum for sorting Genius search results"""
+
+    POPULARITY = "popularity"
+    TITLE = "title"
 
 
 def format_json(json_object: dict):
@@ -18,14 +26,14 @@ def format_json(json_object: dict):
 def retrieve_lyrics(track_url: str):
     """
     Retrieves the lyrics of a song from Genius.
-    
+
     Keyword arguments:
         track_url -- The URL of the song
     """
-    
+
     html = requests.get(track_url).content
     soup = BeautifulSoup(html, "html.parser")
 
-    return soup.find(
-        "div", class_="Lyrics__Container-sc-1ynbvzw-5"
-    ).get_text(separator="\n")
+    return soup.find("div", class_="Lyrics__Container-sc-1ynbvzw-5").get_text(
+        separator="\n"
+    )
