@@ -32,3 +32,7 @@ class Artist:
         
         self.url = artist_info["url"]
         """Genius.com URL of the artist."""
+    
+    
+    def __str__(self):
+        return self.name
