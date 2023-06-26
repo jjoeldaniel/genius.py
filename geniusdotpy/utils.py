@@ -1,5 +1,4 @@
 from enum import Enum
-import json
 from bs4 import BeautifulSoup
 import requests
 
@@ -9,18 +8,6 @@ class SortType(Enum):
 
     POPULARITY = "popularity"
     TITLE = "title"
-
-
-def format_json(json_object: dict):
-    """Formats JSON object to be more readable
-
-    Keyword arguments:
-        json_object -- The JSON object to format
-
-    Returns:
-        JSON object
-    """
-    return json.dumps(json_object, indent=2)
 
 
 def retrieve_lyrics(track_url: str):
