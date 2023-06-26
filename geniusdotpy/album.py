@@ -1,37 +1,28 @@
-from geniusdotpy.utils import format_json
+from geniusdotpy.artist import Artist
 
 
 class Album:
-    def __init__(self, album_info):
+    """Album class"""
+
+    def __init__(self, album_info: dict):
         self.album_info = album_info
-        self.id = album_info["id"]
-        self.url = album_info["url"]
-        self.path = album_info["api_path"]
+        """JSON object containing album information."""
 
-        if "cover_art_url" in album_info:
-            self.cover_art_url = album_info["cover_art_url"]
-        else:
-            self.cover_art_url = None
+        self.name: str = album_info["name"]
+        """Album name"""
 
-        # Fallback name to full_title if name is not present and vice versa
-        if "name" in album_info:
-            self.name = album_info["name"]
-        else:
-            self.name = album_info["full_title"]
+        self.url: str = album_info["url"]
+        """Album URL"""
+
+        # Default `full_title` to name
+        self.full_title: str = album_info["name"]
+        """Album full title"""
+
+        # Possibly null values
+        self.artist = None
+        """Album artist"""
 
         if "full_title" in album_info:
             self.full_title = album_info["full_title"]
-        else:
-            self.full_title = album_info["name"]
-
-    def __str__(self):
-        return self.name
-
-    def to_json(self):
-        """Convert album info to JSON.
-
-        Returns:
-            JSON object
-        """
-
-        return format_json(self.album_info)
+        if "artist" in album_info:
+            self.artist = Artist(album_info["artist"])

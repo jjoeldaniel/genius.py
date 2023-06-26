@@ -1,13 +1,27 @@
-import json
+from enum import Enum
+from bs4 import BeautifulSoup
+import requests
 
 
-def format_json(json_object):
-    """Formats JSON object to be more readable
+class SortType(Enum):
+    """Enum for sorting Genius search results"""
+
+    POPULARITY = "popularity"
+    TITLE = "title"
+
+
+def retrieve_lyrics(track_url: str):
+    """
+    Retrieves the lyrics of a song from Genius.
 
     Keyword arguments:
-        json_object -- The JSON object to format
-
-    Returns:
-        JSON object
+        track_url -- The URL of the song
     """
-    return json.dumps(json_object, indent=2)
+
+    html = requests.get(track_url).content
+    soup = BeautifulSoup(html, "html.parser")
+
+    res = soup.find("div", class_="Lyrics__Container-sc-1ynbvzw-5")
+    assert res, "Could not find lyrics (div.Lyrics__Container-sc-1ynbvzw-5))"
+
+    return res.get_text(separator="\n")

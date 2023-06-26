@@ -2,7 +2,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/geniusdotpy)](https://pypi.org/project/geniusdotpy/)
 [![Python 3.x version](https://img.shields.io/badge/python-3.x-brightgreen.svg)](https://www.python.org/downloads/)
-[![Wiki Link](https://img.shields.io/badge/wiki-documentation-forestgreen)](https://github.com/jjoeldaniel/genius.py/wiki)
+[![Documentation](https://img.shields.io/badge/documentation-8A2BE2)](https://jjoeldaniel.github.io/genius.py/)
 [![Downloads](https://static.pepy.tech/badge/geniusdotpy)](https://pepy.tech/project/geniusdotpy)
 
 > Python wrapper for Genius API
@@ -11,6 +11,7 @@ With genius.py, enjoy an easy-to-use interface to interact with [Genius API](htt
 
 ## Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Features](#features)
 - [Install](#install)
 - [Getting Started](#getting-started)
@@ -26,7 +27,7 @@ With genius.py, enjoy an easy-to-use interface to interact with [Genius API](htt
 
 ## Install
 
-```python
+```bash
 pip install geniusdotpy
 ```
 
@@ -51,8 +52,6 @@ To get started...
 ## References
 
 [Genius API](https://docs.genius.com)
-
-[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 
 ---
 
