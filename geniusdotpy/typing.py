@@ -1,1 +1,3 @@
-queryID = str | int
+from typing import TypeAlias
+
+queryID: TypeAlias = str | int
