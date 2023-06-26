@@ -7,14 +7,21 @@ class Album:
 
     def __init__(self, album_info: json):
         self.album_info = album_info
+        """JSON object containing album information."""
+
         self.name = album_info["name"]
+        """Album name"""
+
         self.url = album_info["url"]
+        """Album URL"""
 
         # Default `full_title` to name
         self.full_title = album_info["name"]
+        """Album full title"""
 
         # Possibly null values
         self.artist = None
+        """Album artist"""
 
         if "full_title" in album_info:
             self.full_title = album_info["full_title"]

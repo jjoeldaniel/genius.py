@@ -19,7 +19,7 @@ class Artist:
         """
 
         self.artist_info = artist_info
-        """JSON object containing artist information.""" ""
+        """JSON object containing artist information."""
 
         self.api_path = artist_info["api_path"]
         """API path of the artist."""
