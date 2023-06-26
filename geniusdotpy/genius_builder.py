@@ -52,7 +52,7 @@ class GeniusBuilder:
         response = requests.get(endpoint, headers=self.headers)
         response.raise_for_status()
 
-        return Artist(track_info=response.json()["response"]["artist"])
+        return Artist(artist_info=response.json()["response"]["artist"])
 
     def search(self, query: str) -> Track:
         """Search for a track by query.
@@ -77,7 +77,7 @@ class GeniusBuilder:
         return tracks
 
     def search_track_by_artist(
-        self, artist_id: int, sort=SortType.POPULARITY, page=1, per_page=20
+        self, artist_id: int, sort=SortType.TITLE, page=1, per_page=20
     ) -> list:
         endpoint = f"{self.endpoint}/artists/{artist_id}/songs?sort={sort.value}&per_page={per_page}&page={page}"
         tracks = list()
