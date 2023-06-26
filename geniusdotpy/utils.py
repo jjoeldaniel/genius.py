@@ -22,6 +22,6 @@ def retrieve_lyrics(track_url: str):
     soup = BeautifulSoup(html, "html.parser")
 
     res = soup.find("div", class_="Lyrics__Container-sc-1ynbvzw-5")
-    assert res
+    assert res, "Could not find lyrics (div.Lyrics__Container-sc-1ynbvzw-5))"
 
     return res.get_text(separator="\n")
