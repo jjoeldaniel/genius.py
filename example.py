@@ -1,36 +1,28 @@
 from geniusdotpy.genius_builder import GeniusBuilder
 
-# Get your client access token from https://genius.com/api-clients
-client_access_token = "token"
 
-# Create a GeniusBuilder object
-genius = GeniusBuilder(client_access_token=client_access_token)
+def main():
+    # Get your client access token from https://genius.com/api-clients
+    client_access_token = (
+        "omEj1v8w4Nx97iaz8KJmGQoiHDvYQah9jHELivHyPYSI1YlRS09-xCcZUz04qOAc"
+    )
 
-# Returns a list of songs containing query
-print(genius.search(query="Kendrick Lamar")[0])
+    # Create a GeniusBuilder object
+    genius = GeniusBuilder(client_access_token=client_access_token)
 
-# Returns an Artist object containing all songs by artist
-artist = genius.search_artist(artist_id=16775)
-print(artist.tracks[0])
+    # Search for a track by ID
+    print(genius.search_track_by_id(378195))
 
-# Returns song matching song ID
-track = genius.search_by_id(185931)
-print(track)
-if hasattr(track, "album"):
-    print(f"Album: {track.album}")
-if hasattr(track, "youtube_url"):
-    print(f"Youtube URL: {track.youtube_url}")
-if hasattr(track, "spotify_url"):
-    print(f"Spotify URL: {track.spotify_url}")
-if hasattr(track, "soundcloud_url"):
-    print(f"Soundcloud URL: {track.soundcloud_url}")
+    # Search artist by ID
+    print(genius.search_artist(16775))
 
-# Prints the lyrics of the song
-print(f"Lyrics:\n{track.lyrics}")
+    # Search for a track by query
+    print(genius.search("Beat It")[0])
 
-# Print track's album json
-print(track.album.to_json())
+    # Search tracks by artist
+    tracks = genius.search_track_by_artist(artist_id=16775)
+    print(tracks[0])
 
-# Search for an album
-album = genius.search_album(album_id=378195)
-print(album.name)
+
+if __name__ == "__main__":
+    main()

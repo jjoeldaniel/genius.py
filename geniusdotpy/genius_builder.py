@@ -1,13 +1,15 @@
 import requests
-from geniusdotpy.track import Track
 from geniusdotpy.artist import Artist
-from geniusdotpy.album import Album
+from geniusdotpy.track import Track
+from geniusdotpy.utils import SortType
+from geniusdotpy.typing import queryID
 
 
 class GeniusBuilder:
     endpoint = "https://api.genius.com"
+    """Genius API endpoint"""
 
-    def __init__(self, client_access_token):
+    def __init__(self, client_access_token: str):
         """GeniusBuilder constructor.
 
         Keyword arguments:
@@ -17,52 +19,26 @@ class GeniusBuilder:
             GeniusBuilder object
         """
 
-        self.client_access_token = client_access_token
+        self.headers = {"Authorization": f"Bearer {client_access_token}"}
 
-    def search_by_id(self, track_id):
+    def search_track_by_id(self, track_id: queryID):
         """Search for a track by ID.
 
         Keyword arguments:
-            track_id -- The ID of the song
+            track_id -- The ID of the track
 
         Returns:
             Track object
         """
 
         endpoint = f"{self.endpoint}/songs/{track_id}"
-        headers = {"Authorization": f"Bearer {self.client_access_token}"}
 
-        response = requests.get(endpoint, headers=headers)
+        response = requests.get(endpoint, headers=self.headers)
         response.raise_for_status()
 
         return Track(track_info=response.json()["response"]["song"])
 
-    def search(self, query):
-        """Search for a track by query.
-
-        Keyword arguments:
-            query -- The query to search for
-
-        Returns:
-            List of Track objects
-        """
-
-        endpoint = f"{self.endpoint}/search"
-        data = {"q": query}
-        headers = {"Authorization": f"Bearer {self.client_access_token}"}
-
-        response = requests.get(endpoint, params=data, headers=headers)
-        response.raise_for_status()
-
-        tracks = []
-
-        for hits in response.json()["response"]["hits"]:
-            track = Track(track_info=hits["result"])
-            tracks.append(track)
-
-        return tracks
-
-    def search_artist(self, artist_id):
+    def search_artist(self, artist_id: queryID):
         """Search for an artist by ID.
 
         Keyword arguments:
@@ -72,36 +48,45 @@ class GeniusBuilder:
             Artist object
         """
 
-        endpoint = f"{self.endpoint}/artists/{artist_id}/songs"
-        headers = {"Authorization": f"Bearer {self.client_access_token}"}
-
-        response = requests.get(endpoint, headers=headers)
-        response.raise_for_status()
-        tracks_info = response.json()["response"]["songs"]
-
         endpoint = f"{self.endpoint}/artists/{artist_id}"
-        response = requests.get(endpoint, headers=headers)
+
+        response = requests.get(endpoint, headers=self.headers)
         response.raise_for_status()
-        artist_info = response.json()["response"]["artist"]
 
-        return Artist(artist_info=artist_info, tracks_info=tracks_info)
+        return Artist(artist_info=response.json()["response"]["artist"])
 
-    def search_album(self, album_id):
-        """Search for an album by ID.
+    def search(self, query: queryID) -> list[Track]:
+        """Search for a track by query.
 
         Keyword arguments:
-            album_id -- The ID of the album
+            query -- The query to search for
 
         Returns:
-            Album object
+            Track object
         """
 
-        endpoint = f"{self.endpoint}/albums/{album_id}"
-        headers = {"Authorization": f"Bearer {self.client_access_token}"}
+        endpoint = f"{self.endpoint}/search?q={query}"
 
-        response = requests.get(endpoint, headers=headers)
+        response = requests.get(endpoint, headers=self.headers)
         response.raise_for_status()
 
-        album_info = response.json()["response"]["album"]
+        tracks: list[Track] = list()
 
-        return Album(album_info=album_info)
+        for hits in response.json()["response"]["hits"]:
+            tracks.append(Track(track_info=hits["result"]))
+
+        return tracks
+
+    def search_track_by_artist(
+        self, artist_id: queryID, sort=SortType.TITLE, page=1, per_page=20
+    ) -> list:
+        endpoint = f"{self.endpoint}/artists/{artist_id}/songs?sort={sort.value}&per_page={per_page}&page={page}"
+        tracks = list()
+
+        response = requests.get(endpoint, headers=self.headers)
+        response.raise_for_status()
+
+        for song in response.json()["response"]["songs"]:
+            tracks.append(Track(track_info=song))
+
+        return tracks
