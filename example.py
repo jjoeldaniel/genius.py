@@ -2,7 +2,6 @@ from geniusdotpy.genius_builder import GeniusBuilder
 
 
 def main():
-    
     # Get your client access token from https://genius.com/api-clients
     client_access_token = "token"
 
@@ -10,7 +9,7 @@ def main():
     genius = GeniusBuilder(client_access_token=client_access_token)
 
     track = genius.search_track_by_id(track_id=378195)
-    print(track.release_date)
+    print(track)
 
 
 if __name__ == "__main__":
