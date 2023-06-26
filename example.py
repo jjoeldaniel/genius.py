@@ -1,4 +1,5 @@
 from geniusdotpy.genius_builder import GeniusBuilder
+from geniusdotpy.track import Track
 
 
 def main():
@@ -20,8 +21,9 @@ def main():
     print(genius.search("Beat It")[0])
 
     # Search tracks by artist
-    tracks = genius.search_track_by_artist(artist_id=16775)
+    tracks: list[Track] = genius.search_track_by_artist(artist_id=16775)
     print(tracks[0])
+    print(tracks[0].lyrics)
 
 
 if __name__ == "__main__":
