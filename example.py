@@ -4,9 +4,7 @@ from geniusdotpy.track import Track
 
 def main():
     # Get your client access token from https://genius.com/api-clients
-    client_access_token = (
-        "omEj1v8w4Nx97iaz8KJmGQoiHDvYQah9jHELivHyPYSI1YlRS09-xCcZUz04qOAc"
-    )
+    client_access_token = "token"
 
     # Create a GeniusBuilder object
     genius = GeniusBuilder(client_access_token=client_access_token)
