@@ -2,6 +2,7 @@ import datetime
 from geniusdotpy import utils
 from geniusdotpy.album import Album
 from geniusdotpy.artist import Artist
+import json
 
 
 class Track:
@@ -12,7 +13,6 @@ class Track:
             track_info -- JSON object containing track info
         """
 
-        self._track_info = track_info
         """JSON object containing track information."""
 
         self.api_path: str = track_info["api_path"]
@@ -65,6 +65,27 @@ class Track:
                         self.spotify_url = provider["url"]
                     case "soundcloud":
                         self.soundcloud_url = provider["url"]
+        
+
+        self.track_info: dict = {
+            "api_path": self.api_path,
+            "id": self.id,
+            "url": self.url,
+            "lyrics": self.lyrics,
+            "title": self.title,
+            "artist": self.artist.artist_info,
+            "release_date": str(self.release_date),
+            "youtube_url": self.youtube_url,
+            "spotify_url": self.spotify_url,
+            "soundcloud_url": self.soundcloud_url,
+        }
+
+        if self.album:
+            self.track_info["album"] = self.album.album_info
+        else:
+            self.track_info["album"] = None
+
+        self.json = json.dumps(self.track_info, indent=2)
 
     def get_lyrics(self) -> None | str:
         """Retrieves the lyrics of the track."""
@@ -76,3 +97,6 @@ class Track:
 
     def __str__(self):
         return f"{self.title} by {self.artist.name}"
+
+    def __repr__(self):
+        return self.json

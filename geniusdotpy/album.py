@@ -1,12 +1,11 @@
 from geniusdotpy.artist import Artist
+import json
 
 
 class Album:
     """Album class"""
 
     def __init__(self, album_info: dict):
-        self.album_info = album_info
-        """JSON object containing album information."""
 
         self.name: str = album_info["name"]
         """Album name"""
@@ -26,3 +25,19 @@ class Album:
             self.full_title = album_info["full_title"]
         if "artist" in album_info:
             self.artist = Artist(album_info["artist"])
+
+        self.album_info: dict[str, str] = {
+            "name": self.name,
+            "url": self.url,
+            "full_title": self.full_title,
+            "artist": self.artist.artist_info,
+        }
+        """JSON object containing album information."""
+
+        self.json = json.dumps(self.album_info, indent=2)
+
+    def __str__(self):
+        return f"{self.name} by {self.artist}"    
+
+    def __repr__(self):
+        return self.json

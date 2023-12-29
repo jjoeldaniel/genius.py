@@ -1,3 +1,5 @@
+import json
+
 class Artist:
     """Genius.com Artist class.
 
@@ -15,9 +17,6 @@ class Artist:
             Artist object
         """
 
-        self.artist_info = artist_info
-        """JSON object containing artist information."""
-
         self.api_path: str = artist_info["api_path"]
         """API path of the artist."""
 
@@ -30,5 +29,18 @@ class Artist:
         self.url: str = artist_info["url"]
         """Genius.com URL of the artist."""
 
+        self.artist_info: dict[str, str] = {
+            "api_path": self.api_path,
+            "id": self.id,
+            "name": self.name,
+            "url": self.url,
+        }
+        """Dictionary containing artist information."""
+
+        self.json = json.dumps(self.artist_info, indent=2)
+
     def __str__(self):
         return self.name
+
+    def __repr__(self):
+        return self.json

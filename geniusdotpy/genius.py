@@ -79,7 +79,7 @@ class Genius:
         self, artist_id: str | int, sort=SortType.TITLE, page=1, per_page=20
     ) -> list:
         endpoint = f"{self.endpoint}/artists/{artist_id}/songs?sort={sort.value}&per_page={per_page}&page={page}"
-        tracks = list()
+        tracks: list[Track] = list()
 
         response = requests.get(endpoint, headers=self.headers)
         response.raise_for_status()
