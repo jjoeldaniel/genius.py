@@ -2,10 +2,8 @@ import requests
 from geniusdotpy.artist import Artist
 from geniusdotpy.track import Track
 from geniusdotpy.utils import SortType
-from geniusdotpy.typing import queryID
 
-
-class GeniusBuilder:
+class Genius:
     endpoint = "https://api.genius.com"
     """Genius API endpoint"""
 
@@ -21,7 +19,7 @@ class GeniusBuilder:
 
         self.headers = {"Authorization": f"Bearer {client_access_token}"}
 
-    def search_track_by_id(self, track_id: queryID):
+    def search_track_by_id(self, track_id: str | int):
         """Search for a track by ID.
 
         Keyword arguments:
@@ -38,7 +36,7 @@ class GeniusBuilder:
 
         return Track(track_info=response.json()["response"]["song"])
 
-    def search_artist(self, artist_id: queryID):
+    def search_artist(self, artist_id: str | int):
         """Search for an artist by ID.
 
         Keyword arguments:
@@ -55,7 +53,7 @@ class GeniusBuilder:
 
         return Artist(artist_info=response.json()["response"]["artist"])
 
-    def search(self, query: queryID) -> list[Track]:
+    def search(self, query: str | int) -> list[Track]:
         """Search for a track by query.
 
         Keyword arguments:
@@ -78,7 +76,7 @@ class GeniusBuilder:
         return tracks
 
     def search_track_by_artist(
-        self, artist_id: queryID, sort=SortType.TITLE, page=1, per_page=20
+        self, artist_id: str | int, sort=SortType.TITLE, page=1, per_page=20
     ) -> list:
         endpoint = f"{self.endpoint}/artists/{artist_id}/songs?sort={sort.value}&per_page={per_page}&page={page}"
         tracks = list()
