@@ -3,7 +3,7 @@ from pathlib import Path
 
 this_directory = Path(__file__).parent
 
-VERSION = "1.1.0"
+VERSION = "1.1.1"
 DESCRIPTION = "Python wrapper for Genius API"
 long_description = (this_directory / "README.md").read_text()
 
